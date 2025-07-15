@@ -1,0 +1,181 @@
+.inicio1-bg {
+  background-image: url('https://i.pinimg.com/736x/b6/95/d2/b695d21062a1e4a0fe9264d5ce242abf.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 30px 0;
+}
+
+.led1-content-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 4px solid;
+  border-image: linear-gradient(to right, #cac9de, #3533cd) 1;
+  border-radius: 16px;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(53, 51, 205, 0.5);
+  flex-wrap: wrap;
+}
+
+.led-imag img {
+  height: auto;
+  transform: scale(0.9) translate(-60px, 10px);
+}
+
+.led1-text {
+  max-width: 600px;
+  color: white;
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.led1-text h2 {
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: #0b64fb;
+}
+
+.led1-text p {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.tortugas-bg {
+  background-color: rgba(0, 0, 0, 0.85);
+  margin-top: 40px;
+}
+
+.tortugas-bg .container {
+  gap: 30px;
+}
+
+.tortugas-img img {
+  width: 100%;
+  max-width: 800px;
+  transform: scale(1.1);
+}
+
+.tortugas-text h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.tortugas-text .azul {
+  color: #0b64fb;
+}
+
+.seccion3-bg {
+  background-color: rgba(0, 0, 0, 0.95);
+  margin-top: 30px;
+}
+
+.seccion3-img-wrapper {
+  position: relative;
+  overflow: visible;
+  padding-bottom: 1rem; 
+}
+
+.img-lateral {
+  max-width: 100%;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+  margin: 0 10px; 
+}
+
+.img-central {
+  max-width: 100%;
+  transform: scale(1.1); 
+  transition: transform 0.3s ease;
+  margin-bottom: 2rem;
+}
+
+.seccion3-texto h3 {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #0b64fb;
+  margin-top: 10px; 
+}
+
+@media (max-width: 990px) {
+  .led-imag img {
+    transform: scale(0.75) translate(140px, 0);
+    max-width: 100%;
+  }
+
+  .led1-text {
+    padding: 40px;
+    max-width: 100%;
+  }
+
+  .led1-text h2 {
+    font-size: 2rem;
+  }
+
+  .led1-text p {
+    font-size: 1.3rem;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .img-central {
+    transform: scale(1.05);
+  }
+
+  .img-lateral {
+    transform: scale(1);
+  }
+
+  .seccion3-texto h3 {
+    font-size: 1.2rem;
+  }
+
+  .tortugas-text h2 {
+    font-size: 1.4rem;
+  }
+
+  .container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .tortugas-img,
+  .tortugas-text {
+    width: 100%;
+  }
+.led1-content-box {
+    flex-direction: column;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .led-imag img {
+    transform: scale(1) translate(0, 0);
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .led1-text {
+    padding: 40px 20px;
+    max-width: 100%;
+  }
+
+  .led1-text h2 {
+    font-size: 2rem;
+  }
+
+  .led1-text p {
+    font-size: 1.4rem;
+  }
+}
+
+
+

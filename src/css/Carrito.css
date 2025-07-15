@@ -1,0 +1,94 @@
+.carrito-container {
+  background: linear-gradient(to right, #000000, #0b0d44);
+  padding: 60px 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(11, 100, 251, 0.3);
+  color: white;
+  max-width: 750px;
+  margin: 50px auto;
+}
+
+.carrito-container h2 {
+  font-size: 2.2rem;
+  color: #0b64fb;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.texto-vacio {
+  text-align: center;
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+
+.carrito-item {
+  background-color: #13131a;
+  border: 1px solid #2a2a3a;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(202, 201, 222, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.carrito-item:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 15px rgba(202, 201, 222, 0.4);
+}
+
+.carrito-item strong {
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.botones-cantidad button {
+  background-color: #0b64fb;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.botones-cantidad button:hover {
+  background-color: #0949c1;
+}
+
+.carrito-total {
+  font-size: 1.5rem;
+  margin-top: 30px;
+  text-align: right;
+  color: #0b64fb;
+  font-weight: bold;
+}
+
+.btn-finalizar {
+  background-color: #00c851;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  display: block;
+  margin: 20px auto 0;
+  box-shadow: 0 0 10px #00c85199;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-finalizar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #00c851cc;
+}
+
+.carrito-img {
+  width: 160px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 20%;
+  border: 2px solid #ffffff;
+  background-color: white;
+  margin-right: 35px;
+  margin-left: 30px;
+}

@@ -1,0 +1,29 @@
+footer {
+  background-color: #000000;
+}
+
+.footer-section {
+  margin: 20px 0;
+}
+
+.footer-logo {
+  max-width: 130px; 
+}
+
+.social-icons a {
+  margin: 0 10px;
+}
+
+.social-icons img {
+  width: 50px; 
+  height: auto;
+}
+
+.footer-section h5 {
+  font-size: 1.5rem; 
+  margin-bottom: 10px; 
+}
+
+.footer-section p {
+  font-size: 1.2rem;
+}

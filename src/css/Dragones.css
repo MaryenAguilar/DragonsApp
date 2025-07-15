@@ -1,0 +1,176 @@
+body {
+  background-color: black !important;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.elementos-scroll-container {
+  padding-bottom: 10px;
+}
+
+.elementos-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+.row1 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding-bottom: 20px;
+}
+
+.dragon-card {
+  flex: 0 0 30%;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  min-width: 300px;
+}
+
+.custom-button {
+  background-color: #0b64fb;
+  border: 2px solid white;
+  color: white;
+  font-size: 1.3rem;
+  padding: 10px 40px;
+  width: 200px;
+  transition: background-color 0.3s, border-color 0.3s;
+  font-weight: bold;
+}
+
+.custom-button:hover {
+  background-color: #0b64fb;
+  border-color: #0a4cd9;
+}
+
+.card1 {
+  border: 5px solid #0b64fb;
+  transition: border-color 0.3s;
+  padding: 20px;
+}
+
+.card-title {
+  padding: 20px;
+}
+
+.titulo-fuego {
+  color: #ff4500;
+}
+.titulo-agua {
+  color: #1e90ff;
+}
+.titulo-hielo {
+  color: #00ffff;
+}
+.titulo-tierra {
+  color: #8B4513;
+}
+.titulo-rayo {
+  color: #ffd700;
+}
+.titulo-naturaleza {
+  color: #228B22;
+}
+.titulo-oscuro {
+  color: #4B0082;
+}
+.titulo-luz {
+  color: #ffffcc;
+}
+
+.card-fuego .card1 {
+  border-color: #ff4500;
+}
+.card-agua .card1 {
+  border-color: #1e90ff;
+}
+.card-hielo .card1 {
+  border-color: #00ffff;
+}
+.card-tierra .card1 {
+  border-color: #8B4513;
+}
+.card-rayo .card1 {
+  border-color: #ffd700;
+}
+.card-naturaleza .card1 {
+  border-color: #228B22;
+}
+.card-oscuro .card1 {
+  border-color: #4B0082;
+}
+.card-luz .card1 {
+  border-color: #ffffcc;
+}
+.card1:hover {
+  border-color: white !important;
+}
+
+@media (max-width: 995px) {
+  .dragon-card {
+    flex: 0 0 40%;
+    min-width: unset;
+    margin-bottom: 15px;
+  }
+
+  .card-title {
+    font-size: 1.3rem;
+    text-align: center;
+  }
+
+  .card-img-top {
+    height: 160px; 
+  }
+}
+@media (max-width: 768px) {
+  .dragon-card {
+    flex: 0 0 100%;
+    min-width: unset;
+    margin-bottom: 20px;
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .card-img-top {
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dragon-card {
+    flex: 0 0 100%;
+    min-width: unset;
+    margin-bottom: 20px;
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  .card-img-top {
+    height: 130px;
+  }
+
+  .custom-button {
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px 15px;
+  }
+}
