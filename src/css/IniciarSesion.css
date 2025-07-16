@@ -314,6 +314,196 @@
   font-size: 1.2rem;
 }
 
+/* Botón de Olvidé mi contraseña */
+.forgot-password-link {
+  background: none;
+  border: none;
+  color: #0b64fb;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 0;
+  margin: 5px 0 0 0;
+  transition: color 0.3s ease;
+}
+
+.forgot-password-link:hover {
+  color: #4285f4;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+/* Modal Content */
+.modal-content {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  border-radius: 15px;
+  padding: 0;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: modalSlideIn 0.3s ease-out;
+  position: relative;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Modal Header */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 30px 20px 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-header h3 {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+  flex: 1;
+}
+
+.close-modal {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.close-modal:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Forgot Password Form */
+.forgot-password-form {
+  padding: 30px;
+}
+
+.forgot-password-form .form-group {
+  margin-bottom: 20px;
+}
+
+.forgot-password-form .form-group label {
+  display: block;
+  color: #fff;
+  font-weight: 500;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.forgot-password-form .form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.forgot-password-form .form-group input:focus {
+  outline: none;
+  border-color: #0b64fb;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 3px rgba(11, 100, 251, 0.1);
+}
+
+.forgot-password-form .form-group input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.forgot-password-form .form-group input.error {
+  border-color: #ff4757;
+  background: rgba(255, 71, 87, 0.1);
+}
+
+.forgot-password-form .error-message {
+  color: #ff4757;
+  font-size: 0.85rem;
+  margin-top: 5px;
+  display: block;
+}
+
+/* Modal Buttons */
+.modal-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.cancel-button,
+.submit-button {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cancel-button {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.cancel-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.submit-button {
+  background: linear-gradient(135deg, #0b64fb 0%, #4285f4 100%);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(11, 100, 251, 0.3);
+}
+
+.submit-button:hover {
+  background: linear-gradient(135deg, #0952d9 0%, #3367d6 100%);
+  box-shadow: 0 6px 20px rgba(11, 100, 251, 0.4);
+  transform: translateY(-2px);
+}
+
 /* Responsivo */
 @media (max-width: 768px) {
   .container {
@@ -355,6 +545,23 @@
   .social-buttons {
     flex-direction: column;
   }
+
+  .modal-content {
+    margin: 20px;
+    max-width: none;
+  }
+  
+  .modal-header {
+    padding: 20px 25px 15px 25px;
+  }
+  
+  .modal-header h3 {
+    font-size: 1.3rem;
+  }
+  
+  .forgot-password-form {
+    padding: 25px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -369,5 +576,17 @@
 
   .login-form-container h3 {
     font-size: 1.7rem;
+  }
+  
+  .modal-buttons {
+    flex-direction: column;
+  }
+  
+  .forgot-password-form {
+    padding: 20px;
+  }
+  
+  .modal-header {
+    padding: 15px 20px 10px 20px;
   }
 }
