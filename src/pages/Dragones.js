@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'; // <--- Añadimos useState y useEffect
+import React, { useState, useEffect } from 'react'; // <--- Añadir useState y useEffect
 import '../css/Dragones.css';
 import { useCarrito } from '../context/CarritoContext';
 
@@ -13,8 +13,7 @@ const elementos = [
   { id: "luz", img: require('../img/Luz.webp') },
 ];
 
-// Hemos añadido un 'id' único a cada dragón para que React los pueda rastrear mejor.
-// Si tu compañera ya tenía IDs, puedes usar los de ella.
+// Se añade un 'id' único a cada dragón para que React los pueda rastrear mejor.
 const todosLosDragonesEstaticos = {
   fuego: [
     { id: "df1", nombre: "Dragón Fuego", imagen: require('../img/dragonfuego.jpg'), precio: 100 },
@@ -76,19 +75,19 @@ const Dragones = () => {
       return; // Salimos de la función
     }
 
-    // Convertimos el término de búsqueda a minúsculas para que la búsqueda no distinga mayúsculas/minúsculas
+    // Convierte el término de búsqueda a minúsculas para que la búsqueda no distinga mayúsculas/minúsculas
     const lowerCaseSearchTerm = searchTerm.toLowerCase();
     const newFilteredDragones = {}; // Objeto para guardar los dragones que coinciden
 
-    // Recorremos cada categoría de dragones (fuego, agua, etc.)
+    // Recorre cada categoría de dragones (fuego, agua, etc.)
     for (const tipo in todosLosDragonesEstaticos) {
-      // Filtramos los dragones dentro de cada categoría
+      // Filtra los dragones dentro de cada categoría
       newFilteredDragones[tipo] = todosLosDragonesEstaticos[tipo].filter(dragon =>
-        // Verificamos si el nombre del dragón (en minúsculas) incluye el término de búsqueda
+        // Verifica si el nombre del dragón (en minúsculas) incluye el término de búsqueda
         dragon.nombre.toLowerCase().includes(lowerCaseSearchTerm)
       );
     }
-    // Actualizamos el estado con los dragones filtrados
+    // Actualiza el estado con los dragones filtrados
     setFilteredDragones(newFilteredDragones);
   }, [searchTerm]); // La dependencia [searchTerm] hace que este efecto se ejecute cuando searchTerm cambie
 
@@ -150,7 +149,7 @@ const Dragones = () => {
               </h2>
               <div className="row1 justify-content-center">
                 {lista.map((dragon, idx) => (
-                  // Usamos dragon.id si existe, si no, idx. Es importante para las 'keys' de React.
+                  // Usa dragon.id si existe, si no, idx. Es importante para las 'keys' de React.
                   <div key={dragon.id || idx} className={`dragon-card card-${tipo}`}>
                     <div className="card1 bg-dark text-white">
                       <img
