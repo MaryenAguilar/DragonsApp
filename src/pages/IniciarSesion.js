@@ -111,6 +111,112 @@ const IniciarSesion = () => {
     setShowPassword(!showPassword);
   };
 
+  const handleForgotPasswordClick = () => {
+    setShowForgotPassword(true);
+  };
+
+  const handleForgotPasswordInputChange = (e) => {
+    const { name, value } = e.target;
+    setForgotPasswordData({
+      ...forgotPasswordData,
+      [name]: value
+    });
+    if (forgotPasswordErrors[name]) {
+      setForgotPasswordErrors({
+        ...forgotPasswordErrors,
+        [name]: ''
+      });
+    }
+  };
+
+  const validateForgotPasswordForm = () => {
+    const newErrors = {};
+    if (!forgotPasswordData.nombre.trim()) {
+      newErrors.nombre = 'El nombre de usuario es obligatorio';
+    }
+    if (!forgotPasswordData.nuevaPassword) {
+      newErrors.nuevaPassword = 'La nueva contraseña es obligatoria';
+    } else if (forgotPasswordData.nuevaPassword.length < 6) {
+      newErrors.nuevaPassword = 'La contraseña debe tener al menos 6 caracteres';
+    }
+    if (!forgotPasswordData.confirmarPassword) {
+      newErrors.confirmarPassword = 'Confirma tu nueva contraseña';
+    } else if (forgotPasswordData.nuevaPassword !== forgotPasswordData.confirmarPassword) {
+      newErrors.confirmarPassword = 'Las contraseñas no coinciden';
+    }
+    setForgotPasswordErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleForgotPasswordSubmit = (e) => {
+    e.preventDefault();
+    if (!validateForgotPasswordForm()) return;
+
+    fetch("http://localhost/backend-php/reset_password.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        nombre: forgotPasswordData.nombre,
+        nuevaPassword: forgotPasswordData.nuevaPassword
+      })
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.mensaje) {
+          Swal.fire({
+            title: '¡Contraseña actualizada!',
+            text: 'Tu contraseña ha sido cambiada exitosamente',
+            icon: 'success',
+            background: '#1a1a1a',
+            color: '#fff',
+            confirmButtonColor: '#0b64fb',
+            confirmButtonText: 'Continuar'
+          }).then(() => {
+            setShowForgotPassword(false);
+            setForgotPasswordData({
+              nombre: '',
+              nuevaPassword: '',
+              confirmarPassword: ''
+            });
+            setForgotPasswordErrors({});
+          });
+        } else {
+          Swal.fire({
+            title: 'Error',
+            text: data.error || 'No se pudo actualizar la contraseña',
+            icon: 'error',
+            background: '#1a1a1a',
+            color: '#fff',
+            confirmButtonColor: '#0b64fb',
+            confirmButtonText: 'Intentar de nuevo'
+          });
+        }
+      })
+      .catch(err => {
+        Swal.fire({
+          title: 'Error de conexión',
+          text: 'No se pudo conectar con el servidor',
+          icon: 'error',
+          background: '#1a1a1a',
+          color: '#fff',
+          confirmButtonColor: '#0b64fb',
+          confirmButtonText: 'Cerrar'
+        });
+        console.error(err);
+      });
+  };
+
+  const closeForgotPasswordModal = () => {
+    setShowForgotPassword(false);
+    setForgotPasswordData({
+      nombre: '',
+      nuevaPassword: '',
+      confirmarPassword: ''
+    });
+    setForgotPasswordErrors({});
+  };
   return (
     <div className="login-container">
       <div className="login-bg">
@@ -167,12 +273,88 @@ const IniciarSesion = () => {
                 </form>
                 <div className="login-footer">
                   <p>¿No tienes cuenta? <Link to="/registro">Regístrate aquí</Link></p>
+                  <p>
+                    <button 
+                      type="button" 
+                      className="forgot-password-link"
+                      onClick={handleForgotPasswordClick}
+                    >
+                      ¿Olvidaste tu contraseña?
+                    </button>
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Modal para Olvidé mi Contraseña */}
+      {showForgotPassword && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h3>Restablecer Contraseña</h3>
+              <button 
+                type="button" 
+                className="close-modal"
+                onClick={closeForgotPasswordModal}
+              >
+                ×
+              </button>
+            </div>
+            <form onSubmit={handleForgotPasswordSubmit} className="forgot-password-form">
+              <div className="form-group">
+                <label htmlFor="nombre">Nombre de Usuario</label>
+                <input
+                  type="text"
+                  id="nombre"
+                  name="nombre"
+                  value={forgotPasswordData.nombre}
+                  onChange={handleForgotPasswordInputChange}
+                  className={forgotPasswordErrors.nombre ? 'error' : ''}
+                  placeholder="Ingresa tu nombre de usuario"
+                />
+                {forgotPasswordErrors.nombre && <span className="error-message">{forgotPasswordErrors.nombre}</span>}
+              </div>
+              <div className="form-group">
+                <label htmlFor="nuevaPassword">Nueva Contraseña</label>
+                <input
+                  type="password"
+                  id="nuevaPassword"
+                  name="nuevaPassword"
+                  value={forgotPasswordData.nuevaPassword}
+                  onChange={handleForgotPasswordInputChange}
+                  className={forgotPasswordErrors.nuevaPassword ? 'error' : ''}
+                  placeholder="Ingresa tu nueva contraseña"
+                />
+                {forgotPasswordErrors.nuevaPassword && <span className="error-message">{forgotPasswordErrors.nuevaPassword}</span>}
+              </div>
+              <div className="form-group">
+                <label htmlFor="confirmarPassword">Confirmar Nueva Contraseña</label>
+                <input
+                  type="password"
+                  id="confirmarPassword"
+                  name="confirmarPassword"
+                  value={forgotPasswordData.confirmarPassword}
+                  onChange={handleForgotPasswordInputChange}
+                  className={forgotPasswordErrors.confirmarPassword ? 'error' : ''}
+                  placeholder="Confirma tu nueva contraseña"
+                />
+                {forgotPasswordErrors.confirmarPassword && <span className="error-message">{forgotPasswordErrors.confirmarPassword}</span>}
+              </div>
+              <div className="modal-buttons">
+                <button type="button" className="cancel-button" onClick={closeForgotPasswordModal}>
+                  Cancelar
+                </button>
+                <button type="submit" className="submit-button">
+                  Actualizar Contraseña
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
